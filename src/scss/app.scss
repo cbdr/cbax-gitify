@@ -452,15 +452,24 @@ input {
 /* @group Component / Notification  */
 
 .new {
-  background-color: green;
+  background-color: #0BC708;
+  &:hover {
+    background-color: #64D862;
+  }
 }
 
 .outstanding {
-  background-color: yellow;
+  background-color: #E6C109;
+  &:hover {
+    background-color: #EAD35F;
+  }
 }
 
 .stale {
-  background-color: red;
+  background-color: #E65B09;
+  &:hover {
+    background-color: #EA7B39;
+  }
 }
 
 .notification {
@@ -492,10 +501,6 @@ input {
     @include check-octicon;
     margin-right: 10px;
     font-size: 20px;
-  }
-
-  &:hover {
-    background-color: $gray-lightest;
   }
 }
 
