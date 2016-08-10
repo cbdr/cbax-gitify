@@ -41,6 +41,32 @@ export function logout() {
 };
 
 
+// Get User Login Name
+export const USERNAME_REQUEST = 'USERNAME_REQUEST';
+export const USERNAME_SUCCESS = 'USERNAME_SUCCESS';
+export const USERNAME_FAILURE = 'USERNAME_FAILURE';
+
+export function getUsername() {
+  return {
+    [CALL_API]: {
+      endpoint: 'https://api.github.com/user',
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Cache-Control': 'no-cache',
+        'Content-Type': 'application/json'
+      },
+      types: [USERNAME_REQUEST, {
+        type: USERNAME_SUCCESS,
+        payload: (action, state, res) => getJSON(res)
+      }, {
+        type: USERNAME_FAILURE,
+        payload: (action, state, res) => getJSON(res)
+      }]
+    }
+  };
+};
+
 // Notifications
 
 export const NOTIFICATIONS_REQUEST = 'NOTIFICATIONS_REQUEST';

@@ -27,8 +27,17 @@ export class NotificationsPage extends React.Component {
 
   render() {
     const wrapperClass = 'container-fluid main-container notifications';
-    const notificationsEmpty = _.isEmpty(this.props.notifications);
+    const username = this.props.username;
+    var notifications = this.props.notifications;
 
+    if (this.props.showOnlyMyNotifications) {
+      notifications = this.props.notifications.filter((obj) => {
+          return username in obj.subject.assignees || username === obj.repository.owner.name;
+      });
+     }
+
+    const notificationsEmpty = _.isEmpty(notifications);
+    
     if (this.props.failed) {
       return <Oops />;
     }
@@ -37,8 +46,8 @@ export class NotificationsPage extends React.Component {
       return <AllRead />;
     };
 
-    const notifications = this.props.searchQuery ?
-      _.filter(this.props.notifications, this.matchesSearchTerm.bind(this)) : this.props.notifications;
+    notifications = this.props.searchQuery ?
+      _.filter(notifications, this.matchesSearchTerm.bind(this)) : notifications;
     var groupedNotifications = _.groupBy(notifications, (object) => object.repository.full_name);
 
     if (_.isEmpty(groupedNotifications) && this.props.searchQuery) {
@@ -74,8 +83,10 @@ export class NotificationsPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    showOnlyMyNotifications: state.settings.showOnlyMyNotifications,
     failed: state.notifications.failed,
     notifications: state.notifications.response,
+    username: state.user.username,
     searchQuery: state.searchFilter.query
   };
 };

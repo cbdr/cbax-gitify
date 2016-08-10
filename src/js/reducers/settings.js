@@ -7,6 +7,7 @@ const initialState = {
   playSound: true,
   showNotifications: true,
   markOnClick: false,
+  showOnlyMyNotifications: false,
   openAtStartup: false
 };
 

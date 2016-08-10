@@ -1,5 +1,5 @@
 import { CALL_API, isRSAA } from 'redux-api-middleware';
-import { NOTIFICATIONS_REQUEST, MARK_NOTIFICATION_REQUEST, MARK_REPO_NOTIFICATION_REQUEST } from '../actions';
+import { NOTIFICATIONS_REQUEST, MARK_NOTIFICATION_REQUEST, MARK_REPO_NOTIFICATION_REQUEST, USERNAME_REQUEST } from '../actions';
 
 export default store => next => action => {
   if (!isRSAA(action)) {
@@ -12,6 +12,7 @@ export default store => next => action => {
       const endpoint = action[CALL_API].endpoint + '?participating=';
       action[CALL_API].endpoint = endpoint + (settings.participating ? 'true' : 'false');
 
+    case USERNAME_REQUEST:
     case NOTIFICATIONS_REQUEST:
     case MARK_NOTIFICATION_REQUEST:
     case MARK_REPO_NOTIFICATION_REQUEST:
