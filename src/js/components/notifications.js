@@ -32,12 +32,12 @@ export class NotificationsPage extends React.Component {
 
     if (this.props.showOnlyMyNotifications) {
       notifications = this.props.notifications.filter((obj) => {
-          return username in obj.subject.assignees || username === obj.repository.owner.name;
+          return obj.subject.assignees.includes(username) || username === obj.repository.owner.name;
       });
      }
 
     const notificationsEmpty = _.isEmpty(notifications);
-    
+
     if (this.props.failed) {
       return <Oops />;
     }
