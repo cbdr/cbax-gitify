@@ -37,12 +37,6 @@ export class Repository extends React.Component {
             <span>{'/' + repositoryName}</span>
             <span>{organisationName}</span>
           </div>
-          <div className="col-xs-1 check-wrapper">
-            <span
-              title="Mark Repository as Read"
-              className="octicon octicon-check"
-              onClick={this.markRepoAsRead.bind(this)} />
-          </div>
         </div>
 
         <ReactCSSTransitionGroup
