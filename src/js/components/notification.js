@@ -53,9 +53,6 @@ export class SingleNotification extends React.Component {
         <div className="col-xs-10 subject" onClick={this.pressTitle.bind(this)}>
           {this.props.notification.subject.title}
         </div>
-        <div className="col-xs-1 check-wrapper">
-          <span title="Mark as Read" className="octicon octicon-check" onClick={this.markAsRead.bind(this)} />
-        </div>
       </div>
     );
   }
