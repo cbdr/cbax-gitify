@@ -27,7 +27,6 @@ export class NotificationsPage extends React.Component {
 
   render() {
     const wrapperClass = 'container-fluid main-container notifications';
-    const notificationsEmpty = _.isEmpty(this.props.notifications);
     const username = this.props.username;
     var notifications = this.props.notifications;
 
@@ -37,6 +36,8 @@ export class NotificationsPage extends React.Component {
       });
      }
 
+    const notificationsEmpty = _.isEmpty(notifications);
+    
     if (this.props.failed) {
       return <Oops />;
     }
