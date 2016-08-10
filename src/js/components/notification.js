@@ -1,4 +1,9 @@
 const shell = window.require('electron').shell;
+const urgency = {
+  0: 'new',
+  5: 'outstanding',
+  10: 'stale',
+};
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -6,12 +11,6 @@ import { connect } from 'react-redux';
 import { markNotification } from '../actions';
 
 export class SingleNotification extends React.Component {
-
-  urgency = {
-    0: 'new',
-    5: 'outstanding',
-    10: 'stale',
-  }
 
   pressTitle() {
     this.openBrowser();
@@ -34,7 +33,7 @@ export class SingleNotification extends React.Component {
   }
 
   getUrgency() {
-    return this.urgency[this.props.notification.subject.urgency];
+    return urgency[this.props.notification.subject.urgency];
   }
 
   render() {
