@@ -5,7 +5,7 @@ import * as storage from 'redux-storage';
 import createEngine from 'redux-storage-engine-localstorage';
 import filter from 'redux-storage-decorator-filter';
 
-import { fetchNotifications, UPDATE_SETTING, LOGIN_SUCCESS, LOGOUT } from '../actions';
+import { fetchNotifications, UPDATE_SETTING, LOGIN_SUCCESS, LOGOUT, getUsername, USERNAME_SUCCESS } from '../actions';
 import constants from '../utils/constants';
 import notifications from '../middleware/notifications';
 import requests from '../middleware/requests';
@@ -30,7 +30,10 @@ export default function configureStore(initialState) {
     .then(function (newState) {
       // Check if the user is logged in
       const isLoggedIn = store.getState().auth.token !== null;
-      if (isLoggedIn) { store.dispatch(fetchNotifications()); }
+      if (isLoggedIn) {
+          store.dispatch(fetchNotifications());
+          store.dispatch(getUsername());
+      }
     });
 
   return store;

@@ -98,6 +98,15 @@ export class SettingsPage extends React.Component {
           </div>
         </div>
 
+        <div className="row setting">
+          <div className="col-xs-8">Show only my notifications</div>
+          <div className="col-xs-4">
+            <Toggle
+              defaultChecked={settings.showOnlyMyNotifications}
+              onChange={this.toggleSetting.bind(this, 'showOnlyMyNotifications')} />
+          </div>
+        </div>
+
         <div className="row footer">
           <div className="col-xs-6 text-left">Made with <span className="heart">❤</span> in Brighton.</div>
           <div className="col-xs-6 text-right">Gitify - Version: {appVersion}</div>
