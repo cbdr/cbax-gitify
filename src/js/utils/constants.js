@@ -6,7 +6,7 @@ let constants = {
 
   // Storage
   STORAGE_KEY: 'gitify-storage',
-  GITHUB_NOTIFICATION_URL: 'https://api.github.com/notifications',
+  GITHUB_NOTIFICATION_URL: 'https://ro67ep8ct4.execute-api.us-east-1.amazonaws.com/prod/',
 
   // Awesome all read messages
   ALLREAD_MESSAGES: [

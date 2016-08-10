@@ -34,8 +34,8 @@ export class Repository extends React.Component {
         <div className="row repository">
           <div className="col-xs-2"><img className="avatar" src={avatarUrl} /></div>
           <div className="col-xs-9 name" onClick={this.openBrowser.bind(this)}>
-            <span>{'/' + repositoryName}</span>
-            <span>{organisationName}</span>
+            <span>{repositoryName ? `/${repositoryName}` : ''}</span>
+            <span>{organisationName ? `${organisationName}` : ''}</span>
           </div>
         </div>
 
