@@ -7,6 +7,12 @@ import { markNotification } from '../actions';
 
 export class SingleNotification extends React.Component {
 
+  urgency = {
+    0: 'new',
+    5: 'outstanding',
+    10: 'stale',
+  }
+
   pressTitle() {
     this.openBrowser();
 
@@ -28,16 +34,7 @@ export class SingleNotification extends React.Component {
   }
 
   getUrgency() {
-    switch (this.props.notification.subject.urgency) {
-        case 0:
-            return 'new';
-        case 5:
-            return 'outstanding';
-        case 10:
-            return 'stale';
-        default:
-            return;
-    }
+    return this.urgency[this.props.notification.subject.urgency];
   }
 
   render() {
