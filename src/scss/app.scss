@@ -451,6 +451,18 @@ input {
 
 /* @group Component / Notification  */
 
+.new {
+  background-color: green;
+}
+
+.outstanding {
+  background-color: yellow;
+}
+
+.stale {
+  background-color: red;
+}
+
 .notification {
   margin: 0;
   border-bottom: 1px solid $gray-lighter;
