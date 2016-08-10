@@ -7,6 +7,12 @@ import { markNotification } from '../actions';
 
 export class SingleNotification extends React.Component {
 
+  urgency = {
+    0: 'new',
+    5: 'outstanding',
+    10: 'stale',
+  }
+
   pressTitle() {
     this.openBrowser();
 
@@ -25,6 +31,10 @@ export class SingleNotification extends React.Component {
 
   markAsRead() {
     this.props.markNotification(this.props.notification.id);
+  }
+
+  getUrgency() {
+    return this.urgency[this.props.notification.subject.urgency];
   }
 
   render() {
@@ -48,7 +58,7 @@ export class SingleNotification extends React.Component {
     }
 
     return (
-      <div className="row notification">
+      <div className={`row notification ${this.getUrgency.call(this)}`}>
         <div className="col-xs-1"><span title={typeIconTooltip} className={typeIconClass} /></div>
         <div className="col-xs-10 subject" onClick={this.pressTitle.bind(this)}>
           {this.props.notification.subject.title}
