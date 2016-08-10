@@ -49,7 +49,7 @@ export const NOTIFICATIONS_FAILURE = 'NOTIFICATIONS_FAILURE';
 export function fetchNotifications() {
   return {
     [CALL_API]: {
-      endpoint: 'https://api.github.com/notifications',
+      endpoint: Constants.GITHUB_NOTIFICATION_URL,
       method: 'GET',
       headers: {
         'Accept': 'application/json',
