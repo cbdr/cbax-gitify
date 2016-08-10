@@ -28,34 +28,42 @@ export class SingleNotification extends React.Component {
   }
 
   render() {
-    var typeIconClass, typeIconTooltip;
+    const notificationRowClass = ['row', 'notification'];
+    var typeIconClass, typeIconTooltip, levelColor, rowClass;
 
     if (this.props.notification.subject.type === 'Issue') {
       typeIconClass = 'octicon octicon-issue-opened';
       typeIconTooltip = 'Issue';
+      levelColor = 'background-red';
     } else if (this.props.notification.subject.type === 'PullRequest') {
       typeIconClass = 'octicon octicon-git-pull-request';
       typeIconTooltip = 'Pull Request';
+      levelColor = 'background-red';
     } else if (this.props.notification.subject.type === 'Commit') {
       typeIconClass = 'octicon octicon-git-commit';
       typeIconTooltip = 'Commit';
+      levelColor = 'background-red';
     } else if (this.props.notification.subject.type === 'Release') {
       typeIconClass = 'octicon octicon-tag';
       typeIconTooltip = 'Release';
+      levelColor = 'background-red';
     } else {
       typeIconClass = 'octicon octicon-question';
       typeIconTooltip = '';
+      levelColor = 'background-red';
     }
+    notificationRowClass.push(levelColor);
+    rowClass = notificationRowClass.join(' ');
 
     return (
-      <div className="row notification">
-        <div className="col-xs-1"><span title={typeIconTooltip} className={typeIconClass} /></div>
-        <div className="col-xs-10 subject" onClick={this.pressTitle.bind(this)}>
-          {this.props.notification.subject.title}
-        </div>
-        <div className="col-xs-1 check-wrapper">
-          <span title="Mark as Read" className="octicon octicon-check" onClick={this.markAsRead.bind(this)} />
-        </div>
+      <div className={rowClass}>
+          <div className="col-xs-1"><span title={typeIconTooltip} className={typeIconClass} /></div>
+          <div className="col-xs-10 subject" onClick={this.pressTitle.bind(this)}>
+            {this.props.notification.subject.title}
+          </div>
+          <div className="col-xs-1 check-wrapper">
+            <span title="Mark as Read" className="octicon octicon-check" onClick={this.markAsRead.bind(this)} />
+          </div>
       </div>
     );
   }
